@@ -188,6 +188,27 @@ const bool operator != (const CRational &num1, const CRational &num2)
 
 //////////////////////////////////////////////////////////////////////////
 // TODO: 12. Реализовать операторы <, >, <=, >=
+const bool operator < (const CRational &num1, const CRational &num2)
+{
+	const unsigned lcm = LCM(num1.GetDenominator(), num2.GetDenominator());
+	return (num1.GetNumerator() * (lcm / num1.GetDenominator()) < num2.GetNumerator() * (lcm / num2.GetDenominator()));
+}
+
+const bool operator > (const CRational &num1, const CRational &num2)
+{
+	const unsigned lcm = LCM(num1.GetDenominator(), num2.GetDenominator());
+	return (num1.GetNumerator() * (lcm / num1.GetDenominator()) > num2.GetNumerator() * (lcm / num2.GetDenominator()));
+}
+
+const bool operator <= (const CRational &num1, const CRational &num2)
+{
+	return (!(num1 > num2));
+}
+
+const bool operator >= (const CRational &num1, const CRational &num2)
+{
+	return (!(num1 < num2));
+}
 //////////////////////////////////////////////////////////////////////////
 
 

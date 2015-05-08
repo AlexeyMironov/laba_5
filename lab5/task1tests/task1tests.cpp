@@ -403,6 +403,15 @@ BOOST_AUTO_TEST_CASE(TestEqualNumbers)
 //	(1/2) < 7      → true
 //	3 <= (7/2)     → true
 //	3 >= (8/2)     → false
+BOOST_AUTO_TEST_CASE(TestMoreOrLess)
+{
+	BOOST_CHECK_EQUAL(CRational(1, 2) >= CRational(1, 3), true);
+	BOOST_CHECK_EQUAL(CRational(1, 2) <= CRational(1, 3), false);
+	BOOST_CHECK_EQUAL(CRational(3, 1) > 2, true);
+	BOOST_CHECK_EQUAL(CRational(1, 2) < 7, true);
+	BOOST_CHECK_EQUAL(3 <= CRational(7, 2), true);
+	BOOST_CHECK_EQUAL(3 >= CRational(8, 2), false);
+}
 //////////////////////////////////////////////////////////////////////////
 
 
