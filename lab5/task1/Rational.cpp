@@ -127,7 +127,10 @@ CRational& CRational::operator -=(CRational const& rational)
 //////////////////////////////////////////////////////////////////////////
 // TODO: 7. Реализовать оператор *
 //////////////////////////////////////////////////////////////////////////
-
+const CRational operator * (const CRational &num1, const CRational &num2)
+{
+	return CRational(num1.GetNumerator() * num2.GetNumerator(), num1.GetDenominator() * num2.GetDenominator());
+}
 
 
 
@@ -159,11 +162,16 @@ CRational& CRational::operator *=(CRational const& other)
 //////////////////////////////////////////////////////////////////////////
 // TODO: 10. Реализовать оператор /=
 //////////////////////////////////////////////////////////////////////////
-
-
-
-
+CRational& CRational::operator /=(CRational const& other)
+{
+	m_numerator *= other.m_denominator;
+	m_denominator *= other.m_numerator;
+	Normalize();
+	return *this;
+}
 //////////////////////////////////////////////////////////////////////////
+
+
 const bool operator == (const CRational &num1, const CRational &num2)
 {
 	return (num1.GetNumerator() == num2.GetNumerator() && num1.GetDenominator() == num2.GetDenominator());

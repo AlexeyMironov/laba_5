@@ -265,6 +265,12 @@ BOOST_AUTO_TEST_CASE(AssigningSubtraction)
 //	(1/2) * (2/3) = (1/3)
 //	(1/2) * (-3)  = (-3/2)
 //	(7*2) / 3     = (14/3)
+BOOST_AUTO_TEST_CASE(TestMultiplication)
+{
+	BOOST_CHECK(CRational(1, 2) * CRational(2, 3) == CRational(1, 3));
+	BOOST_CHECK(CRational(1, 2) * (-3) == CRational(-3, 2));
+	BOOST_CHECK(7 * CRational(2, 3) == CRational(14, 3));
+}
 //////////////////////////////////////////////////////////////////////////
 
 
@@ -340,6 +346,19 @@ BOOST_AUTO_TEST_CASE(AssigningMultiplication)
 //	либо целое:
 //	(1/2) /= (2/3) → (3/4)
 //	(1/2) /= 3     → (1/6)
+BOOST_AUTO_TEST_CASE(AssigningDevision)
+{
+	{
+		CRational r(1, 2);
+		r /= CRational(2, 3);
+		BOOST_CHECK(r == CRational(3, 4));
+	}
+	{
+		CRational r(1, 2);
+		r /= 3;
+		BOOST_CHECK(r == CRational(1, 6));
+	}
+}
 //////////////////////////////////////////////////////////////////////////
 
 
